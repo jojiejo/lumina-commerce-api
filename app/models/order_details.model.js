@@ -19,7 +19,7 @@ OrderDetails.create = (newOrderDetail, result) => {
     });
 };
 
-Order.findByOrderID = (orderID, result) => {
+OrderDetails.findByOrderID = (orderID, result) => {
     sql.query(`SELECT * FROM order_details WHERE order_id = '${orderID}'`, (err, res) => {
       if (err) {
         console.log("error: ", err);
