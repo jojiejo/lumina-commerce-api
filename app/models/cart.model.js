@@ -23,11 +23,11 @@ Cart.create = (newCart, result) => {
 };
 
 Cart.findByUserID = (userID, result) => {
-    sql.query(`SELECT carts.id, carts.user_id, carts.item_id, carts.quantity FROM carts 
-        INNER JOIN users    
+    sql.query(`SELECT carts.id, carts.user_id, carts.item_id, items.name, items.price, carts.quantity FROM carts 
+        INNER JOIN items ON (items.id = carts.item_id)
         WHERE user_id = '${userID}' 
             AND carts.deleted_at IS NULL 
-            AND users.deleted_at IS NULL`, (err, res) => {
+            AND items.deleted_at IS NULL`, (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(err, null);
