@@ -11,5 +11,5 @@ module.exports = app => {
   });
 
   app.post("/api/order", [auth.verifyToken], controller.create);
-  app.get("/api/user/:userID/orders", controller.findByUserID);
+  app.get("/api/user/:userID/orders", [auth.verifyToken], controller.findByUserID);
 };

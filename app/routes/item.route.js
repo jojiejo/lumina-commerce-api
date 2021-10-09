@@ -11,7 +11,7 @@ module.exports = app => {
   });
 
   app.post("/api/item", [auth.verifyToken], controller.create);
-  app.get("/api/items", controller.findAll);
-  app.get("/api/item/:itemID", controller.findByID);
-  app.delete("/api/item/:itemID", controller.remove);
+  app.get("/api/items", [auth.verifyToken], controller.findAll);
+  app.get("/api/item/:itemID", [auth.verifyToken], controller.findByID);
+  app.delete("/api/item/:itemID", [auth.verifyToken], controller.remove);
 };

@@ -10,8 +10,8 @@ module.exports = app => {
     next();
   });
 
-  app.get("/api/user/:userID", controller.findByID);
-  app.delete("/api/user/:userID", controller.remove);
+  app.get("/api/user/:userID", [auth.verifyToken], controller.findByID);
+  app.delete("/api/user/:userID", [auth.verifyToken], controller.remove);
 
   //app.get("/api/user/:userID/carts", controller.findCartByID);
   //app.get("/api/user/:userID/orders", controller.findOrderByID);
